@@ -1,0 +1,75 @@
+import numpy as np
+
+# Define the student's ID
+student_id = "12345"
+
+# Create a 2D array to store the source data
+data = np.array([[55, 65, 75], [120, 150, 170], [210, 230, 240]])
+
+# Define the function to calculate and display the cost for slab 1
+def costSlab1():
+    # Calculate the total cost for slab 1
+    total_cost = 0
+
+    # Iterate through the units in slab 1
+    for unit in data[0]:
+        # Units within the slab 1 range (0 to 100) are charged at Rs.10 per unit
+        if unit <= 100:
+            total_cost += unit * 10
+
+        # Units exceeding the slab 1 range (100) are charged at the slab 2 rate (Rs.15 per unit)
+        else:
+            total_cost += (unit - 100) * 15
+
+    print("Slab 1 Cost:", total_cost)
+
+# Define the function to calculate and display the cost for slab 2
+def costSlab2():
+    # Calculate the total cost for slab 2
+    total_cost = 0
+
+    # Iterate through the units in slab 2
+    for unit in data[1]:
+        # Units within the slab 2 range (101 to 200) are charged at Rs.15 per unit
+        if unit <= 200 and unit > 100:
+            total_cost += unit * 15
+
+        # Units exceeding the slab 2 range (200) are charged at the slab 3 rate (Rs.20 per unit)
+        else:
+            total_cost += (unit - 200) * 20
+
+    print("Slab 2 Cost:", total_cost)
+
+# Define the function to calculate and display the cost for slab 3
+def costSlab3():
+    # Calculate the total cost for slab 3
+    total_cost = 0
+
+    # Iterate through the units in slab 3
+    for unit in data[2]:
+        # Units within the slab 3 range (201 to 300) are charged at Rs.20 per unit
+        if unit > 200:
+            total_cost += unit * 20
+
+    print("Slab 3 Cost:", total_cost)
+
+# Display the repeating menu
+while True:
+    print("\nStudent ID:", student_id)
+    print("\nElectricity Bill Calculation Menu")
+    print("------------------------------------")
+    print("1. Display Slab 1 and Slab 2 Cost")
+    print("2. Display Slab 3 Cost")
+    print("0. Exit")
+
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+        costSlab1()
+        costSlab2()
+    elif choice == 2:
+        costSlab3()
+    elif choice == 0:
+        break
+    else:
+        print("Invalid choice. Please enter a valid option.")
